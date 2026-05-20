@@ -89,13 +89,13 @@
 │ Dashboarding from marts  │      │ Semantic Search          │
 │ KPI Visualizations       │      │ RAG Retrieval            │
 │ Business Analytics       │      │ Embedding Storage        │
-└──────────────┬───────────┘      └──────────────┬───────────┘
-               │                                  │
-               ▼                                  ▼
-       ┌────────────────┐              ┌────────────────────┐
-       │    Grafana     │              │     Streamlit      │
-       │────────────────│              │────────────────────│
-       │ Monitoring UI  │              │ RAG Application UI │
-       │ Pipeline Health│              │ Chat Interface     │
-       │ Metrics        │              │ Semantic Querying  │
-       └────────────────┘              └────────────────────┘
+└──────────────────────────┘      └──────────────┬───────────┘
+                                                 │
+                                                 ▼
+                                        ┌────────────────────┐
+                                        │    Streamlit       │
+                                        │────────────────────│
+                                        │ RAG Application UI │
+                                        │ Chat Interface     │
+                                        │ Semantic Querying  │
+                                        └────────────────────┘

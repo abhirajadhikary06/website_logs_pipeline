@@ -7,7 +7,6 @@ duckdb_path = (
     Path(__file__).resolve().parents[1]
     / "warehouse"
     / "data"
-    / "bronze"
     / "bronze_warehouse.duckdb"
 )
 

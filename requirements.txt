@@ -5,3 +5,6 @@ dlt[sql_database]
 psycopg2-binary
 sqlalchemy
 python-dotenv
+dbt-core
+dbt-duckdb
+dbt-postgres

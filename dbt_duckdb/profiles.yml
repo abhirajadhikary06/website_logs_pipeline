@@ -1,0 +1,14 @@
+dbt_duckdb:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: ../warehouse/data/bronze_warehouse.duckdb
+      schema: dev
+      threads: 4
+
+    prod:
+      type: duckdb
+      path: ../warehouse/data/bronze_warehouse.duckdb
+      schema: prod
+      threads: 8

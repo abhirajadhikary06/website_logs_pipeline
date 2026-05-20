@@ -1,0 +1,261 @@
+version: 2
+models:
+  - name: gold_website_rankings
+    description: "Gold table for website rankings based on error rates and latency."
+    columns:
+      - name: website_name
+        description: "The name of the website."
+        tests:
+          - not_null
+          - unique
+
+      - name: avg_response_time_ms
+        description: "The average latency."
+        tests:
+          - not_null
+
+      - name: total_errors
+        description: "Total number of error checks."
+        tests:
+          - not_null
+
+      - name: total_sla_breaches
+        description: "Total number of SLA breaches."
+        tests:
+          - not_null
+
+      - name: total_checks
+        description: "Total number of checks."
+        tests:
+          - not_null
+
+      - name: error_rate
+        description: "The error rate for the website."
+        tests:
+          - not_null
+
+      - name: fastest_rank
+        description: "Ranking by fastest average response time."
+        tests:
+          - not_null
+
+      - name: error_rank
+        description: "Ranking by highest error count."
+        tests:
+          - not_null
+
+      - name: sla_rank
+        description: "Ranking by highest SLA breach count."
+        tests:
+          - not_null
+
+  - name: gold_website_health_summary
+    description: "Gold table summarizing overall health of websites based on error rates and latency."
+    columns:
+      - name: website_key
+        description: "Foreign key to the website dimension."
+        tests:
+          - not_null
+          - unique
+          - relationships:
+              to: ref('dim_website')
+              field: website_key
+
+      - name: website_name
+        description: "The name of the website."
+        tests:
+          - not_null
+
+      - name: domain
+        description: "The domain of the website."
+        tests:
+          - not_null
+
+      - name: total_checks
+        description: "Total number of checks."
+        tests:
+          - not_null
+
+      - name: successful_checks
+        description: "Total number of successful checks."
+        tests:
+          - not_null
+
+      - name: failed_checks
+        description: "Total number of failed checks."
+        tests:
+          - not_null
+
+      - name: avg_response_time_ms
+        description: "The average latency."
+        tests:
+          - not_null
+
+      - name: p95_latency_ms
+        description: "95th percentile latency."
+        tests:
+          - not_null
+
+      - name: sla_breach_count
+        description: "Total number of SLA breaches."
+        tests:
+          - not_null
+
+      - name: uptime_percentage
+        description: "Uptime percentage."
+        tests:
+          - not_null
+
+      - name: error_rate
+        description: "The error rate for the website."
+        tests:
+          - not_null
+
+      - name: sla_breach_percentage
+        description: "SLA breach percentage."
+        tests:
+          - not_null
+
+      - name: health_score
+        description: "Overall health score."
+        tests:
+          - not_null
+
+  - name: gold_sla_monitoring
+    description: "Gold table for monitoring SLA breaches across websites."
+    columns:
+      - name: website_name
+        description: "The name of the website."
+        tests:
+          - not_null
+
+      - name: check_date
+        description: "The date of the website check."
+        tests:
+          - not_null
+
+      - name: total_checks
+        description: "Total number of checks."
+        tests:
+          - not_null
+
+      - name: sla_breach_count
+        description: "Total number of SLA breaches."
+        tests:
+          - not_null
+
+      - name: avg_response_time_ms
+        description: "Average response time in milliseconds."
+        tests:
+          - not_null
+
+      - name: sla_breach_percentage
+        description: "SLA breach percentage."
+        tests:
+          - not_null
+
+  - name: gold_hourly_performance
+    description: "Gold table for hourly performance metrics of websites."
+    columns:
+      - name: website_name
+        description: "The name of the website."
+        tests:
+          - not_null
+
+      - name: check_hour
+        description: "The hour of the website check."
+        tests:
+          - not_null
+
+      - name: total_checks
+        description: "Total number of checks in that hour."
+        tests:
+          - not_null
+
+      - name: avg_response_time_ms
+        description: "Average response time in milliseconds for that hour."
+        tests:
+          - not_null
+
+      - name: sla_breach_count
+        description: "Total number of SLA breaches in that hour."
+        tests:
+          - not_null
+
+
+  - name: gold_executive_kpis
+    description: "Gold table for executive KPIs related to website performance."
+    columns:
+      - name: total_checks
+        description: "Total number of checks."
+        tests:
+          - not_null
+
+      - name: total_websites
+        description: "Total number of distinct websites."
+        tests:
+          - not_null
+
+      - name: avg_response_time_ms
+        description: "Average response time in milliseconds."
+        tests:
+          - not_null
+
+      - name: successful_checks
+        description: "Total number of successful checks."
+        tests:
+          - not_null
+
+      - name: failed_checks
+        description: "Total number of failed checks."
+        tests:
+          - not_null
+
+      - name: sla_breach_count
+        description: "Total number of SLA breaches."
+        tests:
+          - not_null
+
+      - name: uptime_percentage
+        description: "Uptime percentage."
+        tests:
+          - not_null
+
+      - name: error_rate
+        description: "Error rate."
+        tests:
+          - not_null
+
+      - name: sla_breach_percentage
+        description: "SLA breach percentage."
+        tests:
+          - not_null
+
+  - name: gold_error_trends
+    description: "Gold table for analyzing error trends over time."
+    columns:
+      - name: check_date
+        description: "The date of the check."
+        tests:
+          - not_null
+          - unique
+
+      - name: total_checks
+        description: "Total number of checks on that date."
+        tests:
+          - not_null
+
+      - name: total_errors
+        description: "Total number of errors on that date."
+        tests:
+          - not_null
+
+      - name: unique_websites
+        description: "Number of distinct websites checked on that date."
+        tests:
+          - not_null
+
+      - name: error_rate
+        description: "Error rate for that date."
+        tests:
+          - not_null

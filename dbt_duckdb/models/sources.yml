@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: bronze
+    schema: website_checks_log
+
+    tables:
+      - name: transform_website_checks_log

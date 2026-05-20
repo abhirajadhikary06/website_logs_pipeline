@@ -183,10 +183,10 @@ def load_website_checks_log():
 
             yield row
 
-    # Build a fixed DuckDB file path in warehouse/data/bronze
-    bronze_dir = Path(__file__).resolve().parents[1] / "warehouse" / "data" / "bronze"
-    bronze_dir.mkdir(parents=True, exist_ok=True)
-    duckdb_file = bronze_dir / "bronze_warehouse.duckdb"
+    # Build a fixed DuckDB file path in warehouse/data (project-level data folder)
+    data_dir = Path(__file__).resolve().parents[1] / "warehouse" / "data"
+    data_dir.mkdir(parents=True, exist_ok=True)
+    duckdb_file = data_dir / "bronze_warehouse.duckdb"
 
     # Run the pipeline to load the data into the destination
     pipeline = dlt.pipeline(
