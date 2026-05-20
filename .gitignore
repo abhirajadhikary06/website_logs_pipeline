@@ -2,3 +2,6 @@
 .env
 logs
 /dbt.log
+/warehouse/data/bronze_warehouse.duckdb
+/warehouse/data/silver_warehouse.duckdb
+/warehouse/data/gold_warehouse.duckdb
