@@ -8,3 +8,9 @@ python-dotenv
 dbt-core
 dbt-duckdb
 dbt-postgres
+duckdb
+qdrant-client
+streamlit
+sentence-transformers
+pyyaml
+openai
